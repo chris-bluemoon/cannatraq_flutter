@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:CannaTraq/pages/plants.dart';
+import 'package:CannaTraq/pages/harvests.dart';
+import 'package:CannaTraq/pages/packages.dart';
+import 'package:CannaTraq/pages/transfers.dart';
 import 'package:flutter_launcher_icons/android.dart';
 import 'package:flutter_launcher_icons/constants.dart';
 import 'package:flutter_launcher_icons/custom_exceptions.dart';
@@ -16,6 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/plants': (context) => Plants(),
+        '/harvests': (context) => Harvests(),
+        '/packages': (context) => Packages(),
+        '/transfers': (context) => Transfers(),
+      },
       title: 'Flutter REMO',
       theme: ThemeData(
         // This is the theme of your application.
@@ -77,14 +87,18 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: cannaTraqGreen,
+//        backgroundColor: cannaTraqGreen,
+        iconTheme: new IconThemeData(color: cannaTraqGreen),
+        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Image.asset('assets/title.png'),
+        elevation: 2,
+        title: Image.asset('assets/medical_services_with_text_copy.png', height: 50),
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
+
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
@@ -132,141 +146,166 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Divider(height:20, thickness: 0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(width: 50),
-                Image.asset('assets/plant_icon.png',
-                    fit: BoxFit.contain, height: 80, width: 80),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
-                  width: 240,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Plants',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 20),
-                      ),
-                      Text(
-                        'Create and Manage plantings, plants, and growth.',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 12),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+//            Divider(height:20, thickness: 0),
+            SizedBox(height: 30),
+            InkWell(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 50),
+                  Image.asset('assets/plant_icon.png',
+                      fit: BoxFit.contain, height: 80, width: 80),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
+                    width: 240,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Plants',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          'Create and Manage plantings, plants, and growth.',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              onTap: () {
+                print("tapped on row ONE");
+                Navigator.pushNamed(context, '/plants');
+              },
             ),
             Divider(height:20, thickness: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(width: 50),
-                Image.asset('assets/harvest_icon.png',
-                    fit: BoxFit.contain, height: 80, width: 80),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
-                  width: 240,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Harvest',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 20),
-                      ),
-                      Text(
-                        'Create harvests from plants.',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 12),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+            InkWell(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 50),
+                  Image.asset('assets/harvest_icon.png',
+                      fit: BoxFit.contain, height: 80, width: 80),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
+                    width: 240,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Harvest',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          'Create harvests from plants.',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              onTap: () {
+                print("tapped on row TWO");
+                Navigator.pushNamed(context, '/harvests');
+              },
             ),
             Divider(height:20, thickness: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(width: 50),
-                Image.asset('assets/package_icon.png',
-                    fit: BoxFit.contain, height: 80, width: 80),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
-                  width: 240,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Packages',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 20),
-                      ),
-                      Text(
-                        'Create packages for transfer.',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 12),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+            InkWell(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 50),
+                  Image.asset('assets/package_icon.png',
+                      fit: BoxFit.contain, height: 80, width: 80),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
+                    width: 240,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Packages',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          'Create packages for transfer.',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              onTap: () {
+                print("Pressed row THREE");
+                Navigator.pushNamed(context, '/packages');
+              }
             ),
             Divider(height:20, thickness: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(width: 50),
-                Image.asset('assets/transfer_icon.png',
-                    fit: BoxFit.contain, height: 80, width: 80),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
-                  width: 240,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Transfer',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 20),
-                      ),
-                      Text(
-                        'Manage transfers and print transport manifests.',
-                        style: TextStyle(
-                            fontFamily: 'Supermolot',
-                            fontWeight: FontWeight.bold,
-                            color: cannaTraqGreen,
-                            fontSize: 12),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+            InkWell(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 50),
+                  Image.asset('assets/transfer_icon.png',
+                      fit: BoxFit.contain, height: 80, width: 80),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(50.0, 20.0, 20.0, 20.0),
+                    width: 240,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Transfer',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          'Manage transfers and print transport manifests.',
+                          style: TextStyle(
+                              fontFamily: 'Supermolot',
+                              fontWeight: FontWeight.bold,
+                              color: cannaTraqGreen,
+                              fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+                onTap: () {
+                  print("Pressed row FOUR");
+                  Navigator.pushNamed(context, '/transfers');
+                }
             ),
 //            Divider(height:50, thickness: 2),
           ],
